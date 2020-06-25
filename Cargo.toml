@@ -1,0 +1,25 @@
+[package]
+name = "glutin-simple"
+version = "0.1.0"
+authors = ["nik"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# crate-type lib , который говорит rustc, что не нужно искать функцию main(), а надо создать rlib-файл,
+# содержащий откомпилированный код в форме, которую последующие команды rustc могут использовать в качестве входных данных.
+
+# cdylib - динамическая библиотека ка dylib в которую не включена специфическая для rust информация.
+# Предназначена для вызова из C кода
+# https://doc.rust-lang.org/nightly/edition-guide/rust-2018/platform-and-target-support/cdylib-crates-for-c-interoperability.html
+[lib]
+crate-type = ["lib", "cdylib"]
+
+[dependencies]
+glutin = "0.24.0"
+takeable-option = "0.4"
+
+[build-dependencies]
+gl_generator = "0.14.0"
+
+[target.'cfg(target_os = "android")'.dependencies]
+ndk-glue = { path = "../android-ndk-rs/ndk-glue" }
