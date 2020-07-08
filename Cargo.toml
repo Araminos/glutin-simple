@@ -22,4 +22,10 @@ takeable-option = "0.4"
 gl_generator = "0.14.0"
 
 [target.'cfg(target_os = "android")'.dependencies]
-ndk-glue = { path = "../android-ndk-rs/ndk-glue" }
+ndk-glue = "0.1"
+
+[patch.crates-io]
+ndk-sys = { git = "https://github.com/rust-windowing/android-ndk-rs" }
+ndk = { git = "https://github.com/rust-windowing/android-ndk-rs" }
+ndk-glue = { git = "https://github.com/rust-windowing/android-ndk-rs" }
+glutin = { git = "https://github.com/katyo/glutin", branch = "android-support" }
